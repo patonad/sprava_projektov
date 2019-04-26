@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<users>
+  <user>
+    <login>pato</login>
+    <password>1111</password>
+  </user>
+  <user>
+    <login>samo</login>
+    <password>2222</password>
+  </user>
+</users>

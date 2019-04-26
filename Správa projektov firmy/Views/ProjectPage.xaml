@@ -1,0 +1,53 @@
+﻿<Page x:Class="Správa_projektov_firmy.Views.ProjectPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Správa_projektov_firmy.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="83.2"/>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="93.6"/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="127*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="71.2"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DataGrid CanUserAddRows="False" CellEditEnding="DataGridProjects_OnCellEditEnding"  
+                  Name="DataGridProjects" AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Projects}" Margin="27,8.8,27,26.6"
+                  Grid.Row="2" Grid.ColumnSpan="8">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Width="Auto" Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="*" Header="Abbreviation" Binding="{Binding Abbreviation}"/>
+                <DataGridTextColumn Width="*" Header ="Customer" Binding="{Binding Customer}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding DeleteProjectCommand}" CommandParameter="{Binding ElementName=DataGridProjects, Path=SelectedItem}" Content="Delete" Margin="0,41,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,0.313" Height="25" Grid.Column="5"/>
+        <TextBox Name="TextBoxName" Height="20" Margin="0,16,15.8,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="1.308,5.537" Grid.Column="2"/>
+        <TextBox Name="TextBoxAbbre" Height="21" Margin="0.2,39,15.8,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="-0.189,0.498"/>
+        <TextBox Name="TextBoxCusto" Height="23" Margin="0.6,16,16.6,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4"/>
+        <Label Content="Name:" Margin="1.4,14,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="52" Grid.Column="1"/>
+        <Label Content="Abbreviation:" HorizontalAlignment="Left" Margin="1.4,37,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Name="ButtonAdd" Click="Add_Click" Content="Add" Margin="0,10,9.2,0" VerticalAlignment="Top" RenderTransformOrigin="0.499,0.313" Height="25" Grid.Column="5"/>
+        <Label Content="Customer:" HorizontalAlignment="Left" Margin="14.2,14,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="68"/>
+        <Button  Command="{Binding SaveCommand}" Content="Save changes" Grid.Column="6" Margin="10,10,0,0" VerticalAlignment="Top" Height="25"/>
+        <Button Name="ButtonLogout" Content="Logout" Grid.Column="7" Margin="23.8,22,35,0" VerticalAlignment="Top" RenderTransformOrigin="0.16,0.479" Click="ButtonLogout_Click"/>
+        <Button  Command="{Binding RevertCommand}" Content="Revert" Grid.Column="6" Margin="9.8,41,0.2,0" VerticalAlignment="Top" Height="25"/>
+
+    </Grid>
+</Page>
